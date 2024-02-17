@@ -1,0 +1,17 @@
+// {type:class}
+
+// Define las clases y relaciones
+[Usuario|+ nombre: string;+ direccion: string;+ identificacion: string;+ correo_electronico: string+ contrasena: string]
+[Usuario]^-.-[CuentaAhorro|+ numero_cuenta: string;+ saldo: decimal ]
+[CuentaAhorro]^-.-[Transaccion|+ tipo: string;+ monto: decimal;+ fecha: fecha;+ categoria: string]
+[Usuario]^-.-[Transaccion]
+
+// Define las operaciones
+[Usuario]^-.-|>[Registro|+ registrarUsuario(): void]
+[Usuario]^-.-|>[Actualizacion|+ actualizarDatosUsuario(): void]
+[Usuario]^-.-|>[Eliminacion|+ eliminarUsuario(): void]
+[Usuario]^-.-|>[ConsultaSaldo|+ consultarSaldo(cedula: string, contrasena: string): decimal]
+[CuentaAhorro]^-.-|>[RealizacionTransferencia|+ realizarTransferencia(monto: decimal, cuenta_destino: string, categoria: string): void]
+[CuentaAhorro]^-.-|>[ConsultaTransacciones|+ consultarTransacciones(): lista<Transaccion>]
+[Usuario]^-.-|>[ConsultaTransaccionesPorPeriodo|+ consultarTransaccionesPeriodo(cedula: string, inicio: fecha, fin: fecha): lista<Transaccion>]
+[CuentaAhorro]^-.-|>[PorcentajeGastosIngresos|+ obtenerPorcentajeGastosIngresos(mes: int): mapa<string, decimal>]
