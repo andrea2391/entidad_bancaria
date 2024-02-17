@@ -3,7 +3,7 @@
 //clases
 [EntidadBancaria|-nombre:Texto|+EntidadBancaria(Texto nombre);+registrarUsuario():ArrayList;+crearCuenta():;+crearNumCuenta():Entero]
 
-[Usuario|-nombre:Texto;-direccion:Texto;-cedula:Texto;-correo:Texto;-contrasena:Texto|+Usuario(nombre:Texto;direccion:Texto;cedula:Texto;correo:Texto;contrasena:Texto)]
+[Usuario|-nombre:Texto;-direccion:Texto;-cedula:Texto;-correo:Texto;-contrasena:Texto|+Usuario(nombre:Texto;direccion:Texto;cedula:Texto;correo:Texto;contrasena:Texto);]
 
 [Cuenta|-numCuenta:Entero;-saldo:Double;-propietario:Usuario;-registroTransacciones:ArrayList|+Cuenta(numCuenta:Entero;saldo:Double;propietario:Usuario;registroTransacciones:ArrayList)]
 
