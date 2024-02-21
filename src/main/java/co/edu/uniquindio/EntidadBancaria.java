@@ -13,9 +13,31 @@ public class EntidadBancaria {
         this.nombre = nombre;
         this.cuentas = cuentas;
         this.usuarios = usuarios;
+    }
 
+    public String getNombre(){
+        return nombre;
     }
     
-
+    public  ArrayList<Usuario> getUsuarios(){
+        return usuarios;
+    }
    
+    public  ArrayList<Cuenta> getCuentas(){
+        return cuentas;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setCuentas(ArrayList<Cuenta> cuentas){
+        this.cuentas = cuentas;
+    }
+
+    public void setUsuarios(ArrayList<Usuario> usuarios){
+        this.usuarios = usuarios;
+    }
+
 }
+

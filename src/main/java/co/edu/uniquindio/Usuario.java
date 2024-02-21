@@ -15,7 +15,37 @@ public class Usuario {
         this.cedula = cedula;
         this.contrasena = contrasena;
         this.correo = correo;
-        
+    }
+
+    public String getNombre(){
+        return nombre;
     }
     
+    public String getDireccion(){
+        return direccion;
+    }
+
+    public String getCedula(){
+        return cedula;
+    }
+
+    public String getCorreo(){
+        return correo;
+    }
+
+    public String getContrasena(){
+        return contrasena;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
 }

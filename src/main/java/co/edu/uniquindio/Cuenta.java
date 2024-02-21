@@ -15,7 +15,26 @@ public class Cuenta {
         this.saldo = saldo;
         this.propietario = propietario;
         this.transacciones = transacciones;
+    }
 
+    public String getNumCuenta(){
+        return numCuenta;
     }
     
+    public Double getSaldo(){
+        return saldo;
+    }
+
+    public Usuario getPropietario(){
+        return propietario;
+    }
+
+    public ArrayList<Transaccion> getTransacciones(){
+        return transacciones;
+    }
+
+    public void setSaldo(Double saldo){
+        this.saldo = saldo;
+    }
+
 }

@@ -17,7 +17,26 @@ public class Transaccion {
         this.valor = valor;
         this.fecha = fecha;
         this.categoria = categoria;
-
     } 
+
+    public String getRemitente(){
+        return remitente;
+    }
     
+    public String getDestinatario(){
+        return destinatario;
+    }
+
+    public float getValor(){
+        return valor;
+    }
+
+    public LocalDate getFecha(){
+        return fecha;
+    }
+
+    public Categoria getCategoria(){
+        return categoria;
+    }
+
 }
