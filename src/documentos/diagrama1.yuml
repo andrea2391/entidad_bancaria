@@ -1,15 +1,20 @@
 // {type:class}
 
 //clases
-[EntidadBancaria|-nombre:Texto|+EntidadBancaria(Texto nombre);+registrarUsuario():ArrayList;+crearCuenta():;+crearNumCuenta():Entero]
+[EntidadBancaria|-nombre:Texto;-ususarios:ArrayList<Usuario>;-cuentas:ArrayList<Cuenta>|+EntidadBancaria(Texto nombre; ArrayList<Usuario> ususarios; ArrayList<Cuenta> cuentas);+registrarUsuario():ArrayList<Usuario>;+crearCuenta():;+crearNumCuenta():Entero;+actualizaarDatosDeUsuario()]
 
 [Usuario|-nombre:Texto;-direccion:Texto;-cedula:Texto;-correo:Texto;-contrasena:Texto|+Usuario(nombre:Texto;direccion:Texto;cedula:Texto;correo:Texto;contrasena:Texto);]
 
-[Cuenta|-numCuenta:Entero;-saldo:Double;-propietario:Usuario;-registroTransacciones:ArrayList|+Cuenta(numCuenta:Entero;saldo:Double;propietario:Usuario;registroTransacciones:ArrayList)]
+[Cuenta|-numCuenta:String;-saldo:Double;-propietario:Usuario;-transacciones:ArrayList<Transaccion>|+Cuenta(numCuenta:Entero;saldo:Double;propietario:Usuario;registroTransacciones:ArrayList<Transaccion>)]
 
-[Transaccion|-entradaDeDinero:ArrayList;-salidaDeDinero:ArrayList|+Transaccion(entradaDeDinero:ArrayList;salidaDeDinero:ArrayList)]
+[Transaccion|-remitente:String;-destinatario:String;-valor:float;-fecha:LocalDate;-categoria:Categoria|+Transaccion(remitente:String;destinatario:String;valor:float;fecha:LocalDate;categoria:Categoria)]
+
+[<<Enum>>;Categoria|VIAJE;PAGO;FACTURA;GASOLINA]
 
 //enlaces
 [EntidadBancaria]<>1-*[Usuario]
-[Usuario]<1-1[Cuenta]
+[Usuario]<1-1<>[Cuenta]
 [Cuenta]<>1-*[Transaccion]
+[<<Enum>>;Categoria]->[Transaccion]
+[EntidadBancaria]<-[Cuenta]
+
