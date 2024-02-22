@@ -1,5 +1,6 @@
 package co.edu.uniquindio;
 
+
 public class Usuario {
 
     private String nombre;
@@ -16,6 +17,11 @@ public class Usuario {
         this.contrasena = contrasena;
         this.correo = correo;
     }
+
+
+
+
+
 
     public String getNombre(){
         return nombre;
@@ -37,8 +43,16 @@ public class Usuario {
         return contrasena;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public void setCedula(String cedula){
+        this.cedula = cedula;
     }
 
     public void setCorreo(String correo) {
@@ -48,4 +62,5 @@ public class Usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
 }
