@@ -16,12 +16,8 @@ public class Usuario {
         this.cedula = cedula;
         this.contrasena = contrasena;
         this.correo = correo;
+
     }
-
-
-
-
-
 
     public String getNombre(){
         return nombre;

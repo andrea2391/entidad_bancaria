@@ -4,24 +4,24 @@ import java.util.ArrayList;
 
 public class Cuenta {
 
-    private String numCuenta;
-    private Double saldo;
+    private int numCuenta;
+    private float saldo;
     private Usuario propietario;
     private ArrayList<Transaccion> transacciones = new ArrayList<>();
 
-    public Cuenta (String numCuenta, Double saldo, Usuario propietario, ArrayList<Transaccion> transacciones ){
+    public Cuenta (int numCuenta, float saldo, Usuario propietario, ArrayList<Transaccion> transacciones ){
 
         this.numCuenta = numCuenta;
         this.saldo = saldo;
         this.propietario = propietario;
         this.transacciones = transacciones;
     }
-
-    public String getNumCuenta(){
+    
+    public int getNumCuenta(){
         return numCuenta;
     }
     
-    public Double getSaldo(){
+    public float getSaldo(){
         return saldo;
     }
 
@@ -33,7 +33,7 @@ public class Cuenta {
         return transacciones;
     }
 
-    public void setSaldo(Double saldo){
+    public void setSaldo(float saldo){
         this.saldo = saldo;
     }
 

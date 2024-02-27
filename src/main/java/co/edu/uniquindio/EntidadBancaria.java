@@ -1,18 +1,21 @@
 package co.edu.uniquindio;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class EntidadBancaria {
 
     private String nombre;
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private ArrayList<Cuenta> cuentas = new ArrayList<>();
-
+    
     EntidadBancaria(String nombre, ArrayList<Usuario> usuarios, ArrayList<Cuenta> cuentas ){
 
         this.nombre = nombre;
         this.cuentas = cuentas;
         this.usuarios = usuarios;
+
+        
     }
 
     public ArrayList<Usuario> agregarUsuario(Usuario usuario){
@@ -27,36 +30,78 @@ public class EntidadBancaria {
         return usuario;
     }
 
-    public void actualizarDatosUsuario(Usuario usuario, String elementoActual, String elementoNuevo){
+    public Usuario obtenerUsuario(ArrayList<Usuario> usuarios, String cedula){
 
-        String[] datosUsuario = usuario.split(",");
-        int aux = 0;
-        for (int i=0; i < 5; i++){
-
-            if (datosUsuario[i].equals(elementoActual)){
-                aux = i;
+        for (Usuario usuario : usuarios) {
+            if (usuario.getCedula().equals(cedula)) {
+                return usuario;
             }
         }
-         switch (aux) {
-            case 0:usuario.setNombre(elementoNuevo); break;
-            case 1:usuario.setDireccion(elementoNuevo);break;
-            case 2:usuario.setCedula(elementoNuevo);break;
-            case 3:usuario.setCorreo(elementoNuevo);break;
-            case 4:usuario.setContrasena(elementoNuevo);break;
+        return null;
+    }
+    
+
+    public Usuario actualizarDatos(ArrayList<Usuario> usuarios, String cedula, String elementoActual, String elementoNuevo) {
+        Usuario usuario = obtenerUsuario(usuarios, cedula);
+    
+        if (usuario != null) {
+            if (elementoActual.equalsIgnoreCase(usuario.getNombre())) {
+                usuario.setNombre(elementoNuevo);
+            } else if (elementoActual.equalsIgnoreCase(usuario.getDireccion())) {
+                usuario.setDireccion(elementoNuevo);
+            } else if (elementoActual.equalsIgnoreCase(usuario.getCedula())) {
+                usuario.setCedula(elementoNuevo);
+            } else if (elementoActual.equalsIgnoreCase(usuario.getCorreo())) {
+                usuario.setCorreo(elementoNuevo);
+            } else if (elementoActual.equalsIgnoreCase(usuario.getContrasena())) {
+                usuario.setContrasena(elementoNuevo);
+            } else {
+                throw new IllegalArgumentException("El elemento '" + elementoActual + "' no se puede actualizar.");
+            }
+            return usuario;
+        } else {
+            throw new IllegalArgumentException("Usuario con cédula '" + cedula + "' no encontrado.");
+        }
+    }
+    
+    public void eliminarUsuario(ArrayList<Usuario> usuarios, String cedula){
         
-            default:
-                break;
-         }
+        for (Usuario usuario : usuarios) {
+            if (usuario!= null){
+                if (usuario.getCedula().equals(cedula)) {
+                    usuarios.remove(usuario);
+                    break;
+                }
+            }
+            else{
+                throw new IllegalArgumentException("Usuario con cédula '" + cedula + "' no encontrado.");
+            }
+        } 
     }
 
-    public void eliminarUsuario(String cedula){
+    public int crearNumCuenta() {
+        Random random = new Random();
+        int numCuenta = random.nextInt(1000000000);
+        return numCuenta;
 
-        
-
-        return;
-        
     }
 
+    public void crearCuenta(Usuario usuario, float saldo){
+
+        ArrayList<Transaccion> transacciones = new ArrayList<>();
+        int numCuenta = crearNumCuenta();
+        Cuenta nuevaCuenta = new Cuenta(numCuenta, saldo, usuario, transacciones);
+        cuentas.add(nuevaCuenta);
+    
+    }
+
+    
+    public void obtenerNumeroCuentas (ArrayList<Cuenta> cuentas, int numCuenta){
+
+    }
+
+    
+    
     public String getNombre(){
         return nombre;
     }
